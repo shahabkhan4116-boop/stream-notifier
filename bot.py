@@ -34,7 +34,7 @@ def check_if_live():
         return video_id, title, thumbnail, url
     return None, None, None, None
 
-@tasks.loop(seconds=5)
+@tasks.loop(minutes=5)
 async def check_live():
     global last_live_id
     video_id, title, thumbnail, url = check_if_live()
@@ -45,7 +45,7 @@ async def check_live():
         embed = discord.Embed(
             title=title,
             url=url,
-            description=f"🔴 **RONY IS LIVE! JOIN NOW!**\n\n🔗 {url}",
+            description=f"🔴 **JOIN THE LIVE AND HAVE FUN!**\n\n🔗 {url}",
             color=discord.Color.red()
         )
         embed.set_image(url=thumbnail)
